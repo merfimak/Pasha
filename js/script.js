@@ -38,11 +38,7 @@ const p = document.querySelector('.main_drone_img'),
        
     });
 
-
-
-
-    function ibg(){
-
+function ibg(){
 let ibg=document.querySelectorAll(".ibg");
 for (var i = 0; i < ibg.length; i++) {
 if(ibg[i].querySelector('img')){
@@ -50,7 +46,92 @@ ibg[i].style.backgroundImage = 'url('+ibg[i].querySelector('img').getAttribute('
 }
 }
 }
-
 ibg();
+
+//колькулятор цен
+let vol = document.getElementById('vol');// куда выводим сумму
+let formSelect_rodzaj = document.getElementById('formSelect_rodzaj');
+let formSelect_montag = document.getElementById('formSelect_montag');
+let formSelect_muzyka = document.getElementById('formSelect_muzyka');
+
+let range = document.getElementById('formRange');
+let range_value_div = document.getElementById('range_value_div');//где будем показывать минуты
+
+let checkbox_input_lektor = document.getElementById('checkbox_input_lektor');
+let checkbox_input_chrom = document.getElementById('checkbox_input_chrom');
+let checkbox_input_promowanie = document.getElementById('checkbox_input_promowanie');
+
+let range_price = Number(range.dataset.price);
+
+let lektor_price = Number(checkbox_input_lektor.dataset.price);
+let chrom_price = Number(checkbox_input_chrom.dataset.price);
+let promowanie_price = Number(checkbox_input_promowanie.dataset.price);
+
+range_value_div.innerHTML = range.value;//показываем изночальное количество минут 0
+
+let inputs = document.getElementsByClassName('input');
+for (i = 0; i < inputs.length; i++) {
+inputs[i].addEventListener('input', () => {//любое изменение в инпутах
+  let res = 0;//обнуляем каждый раз
+  vol.innerHTML = res;
+  if (checkbox_input_lektor.checked){ 
+          res = res + lektor_price;
+      }
+   if (checkbox_input_chrom.checked){ 
+      res = res + chrom_price;
+  }
+    if (checkbox_input_promowanie.checked){ 
+      res = res + promowanie_price;
+  }
+
+  let select_rodzaj_sum = Number(formSelect_rodzaj.value);
+  let select_montag_sum = Number(formSelect_montag.value);
+  let select_muzyka_sum = Number(formSelect_muzyka.value);
+
+  let range_sum = range.value * range_price;
+  range_value_div.innerHTML = range.value;//показываем количество минут
+
+  res = res + range_sum + select_rodzaj_sum + select_montag_sum + select_muzyka_sum;
+  vol.innerHTML = res;
+
+  });
+}
+
+//плавная прокрутка
+document.querySelectorAll('a[href^="#"').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        let href = this.getAttribute('href').substring(1);//возвращает подстроку строки между двумя индексами, или от одного индекса и до конца строки.
+        const scrollTarget = document.getElementById(href);
+         const topOffset = document.querySelector('.menu').offsetHeight;
+       // const topOffset = 0; // если не нужен отступ сверху 
+        const elementPosition = scrollTarget.getBoundingClientRect().top;//возвращает размер элемента и его позицию относительно viewport (часть страницы, показанная на экране, и которую мы видим).
+        const offsetPosition = elementPosition - topOffset;
+        window.scrollBy({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+    });
+});
+
+
+//popup
+const popup = document.querySelector('.kontakt_cennik.popup')
+const modal_body = document.querySelector('.modal_body')
+const modal = document.querySelector('.modal')
+
+popup.addEventListener('click', (event) => {
+  modal.classList.toggle("active");
+  modal_body.classList.toggle("active");
+})
+
+modal.addEventListener('click', (event) => {
+  modal.classList.toggle("active");
+  modal_body.classList.toggle("active");
+})
+
+
+
+
 
 }

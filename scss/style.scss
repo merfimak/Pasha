@@ -7,9 +7,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,300&display=swap');
 //font-family: 'Nunito', sans-serif;
 
+
+				
+//#8EEB00	#7CB02C	#5C9900	#ACF53D	#C0F56E
+//Вторичный Цвет A:
+//#FF0000	#BF3030	#A60000	#FF4040	#FF7373
+//Вторичный Цвет B:
+//#8F04A8	#70227E	#5D016D	#BC38D3	#C262D3
+
+$main_color: #ACF53D;
+$accen_color: #A60000;
+$sub_accen_color: #BF3030;
+$accen_text: #70227E;
+
+
+
+
 .wrapper{
 
-}
+} 
 
 
 
@@ -338,6 +354,9 @@ position: absolute;
 .main_content_body{
 	margin: 300px auto 0;
 	max-width: 600px;
+	@media screen and (max-width: 768px){
+	margin: 150px auto 0;
+	}
 }
 
 
@@ -366,12 +385,12 @@ position: absolute;
 	text-transform: uppercase;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4),0 1px 5px rgba(0, 0, 0, 0.4);
 	border-radius: 5px;
-	background-color: #611720;
-	
+	background-color: $accen_color;
+	font-family: 'Nunito', sans-serif;
 	cursor: pointer;
 	transition: 0.5s;
 	&:hover{
-		background-color: #2C000A;
+		background-color: $sub_accen_color;
 		box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
 	}
 }
@@ -433,82 +452,650 @@ position: absolute;
 	}
 
 }
-/*.main_body{
-	max-height: 100vh;
-	overflow: hidden;
-	position: relative;
+
+
+////////////////////////////////////////////////////about///////////////////////////////////////////
+
+
+.about {
+	background-color: $main_color;
+	padding: 50px 0 50px 0;
+	@media screen and (max-width: 786px){
+			padding: 30px 0 30px 0;
+
+	}
 }
-
-.main_video{
-	position: relative;
-	padding-bottom: 56.25%;
-}
-
-
-
-.main_video_media{
-	width: 100%;
-	//height: auto;
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.main_content {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 3;
+.about_body {
+	font-family: 'Nunito', sans-serif;
+	padding: 0 10px;
+	max-width: 1200px;
+	margin: 0 auto;
 	@include flexbox();
-	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+	@media screen and (max-width: 786px){
+		flex-direction: column;
+		align-items: center;
+	}
+}
+.about_info {
+	flex: 0 1 500px;
+	@media screen and (max-width: 786px){
+		flex: 0 1 auto;
+		margin: 0 0 20px 0;
+		text-align: center;
+	}
+}
+.about_title {
+	margin: 0 0 30px 0;
+	font-size: 20px;
+	font-weight: 700;
+	@media screen and (max-width: 1100px){
+		font-size: 18px;
+	}
+	@media screen and (max-width: 786px){
+		margin: 0 0 20px 0;
+	}
+}
+.about_text {
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 1.5;
+	@media screen and (max-width: 1100px){
+		font-size: 14px;
+	}
+}
+.about_foto {
+	flex: 0 0 200px;
+	width: 200px;
+	border-radius: 50%;
+	overflow: hidden;
+	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.7);
+	margin: 0 30px;
+	img{
+		max-width: 100%;
+	}
+	@media screen and (max-width: 1100px){
+		flex: 0 0 180px;
+		width: 180px;
+	}
+	@media screen and (max-width: 786px){
+		flex: 0 1 auto;
+		margin: 0 0 30px 0;
+	}
+}
+.about_contact {
+	flex: 0 1 300px;
+	@media screen and (max-width: 786px){
+		flex: 0 1 auto;
+		margin: 0 0 20px 0;
+				text-align: center;
+
+	}
+}
+.about_contact_title {
+	margin: 0 0 30px 0;
+	font-size: 18px;
+	font-weight: 700;
+	@media screen and (max-width: 1100px){
+		font-size: 14px;
+	}
+	@media screen and (max-width: 786px){
+		margin: 0 0 20px 0;
+	}
+	
+}
+.about_contact_items {
+	
+}
+.about_contact_item {
+	font-size: 15px;
+	font-weight: 600;
+	margin: 0 0 20px 0;
+	span{
+		font-weight: 400;
+	}
+	a{
+		color: $accen_text;
+	}
+	@media screen and (max-width: 1100px){
+		font-size: 14px;
+	}
+	
+}
+////////////////////////////////////////////////////fullsreen///////////////////////////////////////////
+
+.fullsreen {
+	min-height: 40vh;
+	display: flex;
 	justify-content: center;
 }
 
-.main_content_body{
-	margin: 100px auto 0;
-	max-width: 600px;
+.fullsreen_bg{
+	background: url("../img/Desert.jpg") center / cover no-repeat fixed;
 }
+////////////////////////////////////////////////////news///////////////////////////////////////////
 
 
-.rightnow_title {
-	background-color: rgba(0, 0, 0, 0.5);
-	padding: 20px;
+
+.news {
+		background-color: $main_color;
+	padding: 50px 0 50px 0;
+	@media screen and (max-width: 786px){
+			padding: 30px 0 30px 0;
+
+	}
+}
+.news_body {
+		font-family: 'Nunito', sans-serif;
+	padding: 0 10px;
+	max-width: 1200px;
+	margin: 0 auto;
+	
+}
+.news_title {
+	margin: 10px 0 50px 0;
+	text-align: center;
 	font-size: 30px;
 	font-weight: 700;
-	text-align: center;
 	text-transform: uppercase;
-	color: #fff;
-	text-shadow: 2px 3px 4px #000;
-	font-family: 'Nunito', sans-serif;
 }
-.rightnow_btn {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		margin: 30px auto 30px;
+.news_info {
+	@include flexbox();
+	justify-content: space-around;
+	align-items: flex-start;
 
-	color: #fff;
-	font-size: 16px;
-	font-weight: 500;
-	height: 50px;
-	width: 200px;
-	text-transform: uppercase;
-	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4),0 1px 5px rgba(0, 0, 0, 0.4);
-	border-radius: 5px;
-	background-color: #611720;
-	
-	cursor: pointer;
-	transition: 0.5s;
-	&:hover{
-		background-color: #2C000A;
-		box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+	@media screen and (max-width: 786px){
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
 	}
-}*/
+}
+.news_info_text {
+	padding: 0 60px 0 0;
+	flex: 0 1 50%;
+	@media screen and (max-width: 786px){
+		flex: 0 1 auto;
+		padding: 0 0 60px 0;
+	}
+}
+.news_info_title {
+	margin: 0 0 30px 0;
+	font-size: 20px;
+	font-weight: 700;
+	text-transform: uppercase;
+	line-height: 1.5;
+}
+.news_info_text_text {
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #70227E;
+	@media screen and (max-width: 1100px){
+		font-size: 14px;
+	}
+}
+
+
+.news_video{
+	flex: 0 1 40%;
+	@media screen and (max-width: 786px){
+		flex: 0 1 auto;
+		width: 300px;
+	}
+}
+.news_video_body {
+	position: relative;
+  padding-bottom: 56.25%; /* задаёт высоту контейнера для 16:9 (если 4:3 — поставьте 75%) */
+  height: 0;
+  overflow: hidden;
+	  iframe{
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 100%;
+		  border-width: 0;
+		  outline-width: 0;
+	}
+}
+
+////////////////////////////////////////////////////kontakt///////////////////////////////////////////
+
+.kontakt {
+	font-family: 'Nunito', sans-serif;
+	background-color: #333;
+	height: 100%;
+	font-size: 14;
+	line-height: 1;
+	padding: 30px 0 50px 0;
+}
+.kontakt_body {
+	max-width: 550px;
+	margin: 0 auto;
+	color: #fff;
+	padding: 20px 10px;
+}
+.kontakt_title {}
+.kontakt_title_title {
+	font-size: 40px;
+	font-weight: 700;
+	margin-bottom: 20px;
+	text-align: center;
+}
+.kontakt_title_text {
+	font-size: 17px;
+	font-weight: 400;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.kontakt_cennik {
+	text-align: center;
+	max-width: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 60px;
+	background-color:  #5C9900;
+	color: #fff;
+	font-size: 13px;
+	text-transform: uppercase;
+	line-height: 1.1;
+	font-weight: 400;
+	cursor: pointer;
+	border-radius: 10px;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.7),0 1px 5px rgba(0, 0, 0, 0.7);
+	position: relative;
+	top: 0;
+	transition: background-color 0.5s ease 0s;
+	margin: 0 auto 20px;
+}
+
+.form {}
+.form_body {
+	position: relative;
+}
+/* во время отправки аяксом делаем накладку*/
+.form_body::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	/* тут должна быть анимированая картинка загрузки*/
+	background: rgba(51,51,51, 0.9) url('../img/1.jpg') center / 50px no-repeat;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.5s ease 0s;
+}
+
+.form_body._sending::after {
+opacity:1;
+	visibility: visible;
+}
+.form_item {
+	margin-bottom: 20px;
+}
+.form_lable {
+	font-size: 18px;
+	display: block;
+	margin-bottom: 10px;
+}
 
 
 
 
 
 
+/*получим невидимые или нестилизованные элементы input type=»range» во всех браузерах*/
+input[type=range] {
+  -webkit-appearance: none; /* Скрывает слайдер, чтобы можно было создать свой */
+  width: 100%; /* Указание параметра ширины требуется для Firefox. */
+}
+ 
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+ 
+input[type=range]:focus {
+  outline: none; /* Убирает голубую границу у элемента. Хотя, возможно, и стоит создавать некоторое оформления для состояния фокуса в целях обеспечения доступности. */
+}
+ 
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent; /* Скрывает слайдер, чтобы можно было добавить собственные стили. */
+  border-color: transparent;
+  color: transparent;
+}
+
+/*Оформление ползунка
+Небольшой графический элемент, по которому вы можете кликнуть и перетаскивать вдоль полосы диапазона, называется ползунок. Он поддается оформлению также, как и обычный HTML элемент*/
+
+/* Специальные правила для браузеров на движках WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #7CB02C;
+  cursor: pointer;
+  margin-top: -14px; /* Вам нужно указать значение для поля в Chrome, но в Firefox и IE это происходит автоматически */
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Добавляем классные эффекты для слайдера! */
+}
+ 
+/* Тоже самое для Firefox */
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #7CB02C;
+  cursor: pointer;
+}
+ 
+/* Тоже самое для IE */
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #7CB02C;
+  cursor: pointer;
+}
+
+/*формление полосы диапазона*/
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #5C9900;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+ 
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #5C9900;
+}
+ 
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #5C9900;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+ 
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #5C9900;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #5C9900;
+}
+input[type=range]::-ms-fill-upper {
+  background: #5C9900;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #5C9900;
+}
+
+
+.formRange_lable{
+	
+}
+.range_body {
+}
+.range_value_div {
+	font-size: 18px;;
+	line-height: 1;
+	margin: 20px 0 20px 0;
+}
+.range_input {
+
+}
+.range {}
+.checkboxs {
+	@include flexbox();
+	align-items: center;
+	justify-content: space-around;
+	margin: 50px 0 20px 0;
+	@media screen and (max-width: 500px){
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}
+
+.checkbox {
+	@media screen and (max-width: 500px){
+		margin: 0 0 20px 0;
+	}
+}
+
+.checkbox._error .checkbox_label::before{
+	box-shadow: 0 0 15px red;
+}
+.checkbox_input {
+	display: none;
+}
+
+.checkbox_input:checked + .checkbox_label::after{
+	transform: scale(1);
+}
+
+.checkbox_label {
+		display: inline-flex;
+	font-size: 14px;
+	line-height: 140%;
+	align-items: center;
+	position: relative;
+	cursor: pointer;
+}
+
+.checkbox_label::before{
+	content: "";
+	align-self: start;
+	flex: 0 0 24px;
+	height: 24px;
+	background-color: #fff;
+	border-radius: 4px;
+	margin: 0px 10px 0 0;
+}
+
+
+.checkbox_label_costyl.checkbox_label::before{
+
+	margin: 6px 10px 0 0;
+}
+
+.checkbox_label::after{
+	transition: transform 0.5s ease 0s;
+	content: "";
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	width: 16px;
+	height: 16px;
+	background-color: #5C9900;
+	border-radius: 50%;
+	transform: scale(0);
+}
+
+.checkbox_label_costyl.checkbox_label::after{
+top: 10px;
+}
+.checkbox_input {}
+._req {}
+.checkbox_label {}
+.form_input {
+	height: 50px;
+	padding: 0 10px;
+	border-radius: 5px;
+	width: 100%;
+	font-size: 17px;
+	transition: all 0.5s ease 0s;
+}
+
+.form_input:focus{
+	box-shadow: 0 0 15px #fff;
+}
+
+.form_input._error{
+	box-shadow: 0 0 15px red;
+}
+
+textarea.form_input {
+	min-height: 120px;
+	resize: vertical;
+	padding: 20px;
+}
+._email {}
+
+
+.form_button {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 60px;
+	background-color:  #5C9900;
+	color: #fff;
+	font-size: 18px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: 700;
+	cursor: pointer;
+	border-radius: 10px;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.7),0 1px 5px rgba(0, 0, 0, 0.7);
+	position: relative;
+	top: 0;
+	transition: background-color 0.5s ease 0s;
+}
+.form_button:hover{
+	background-color: #7CB02C;
+}
+
+.form_button:active{
+	top: 3px;
+	box-shadow: 0 2px 0  #000;
+}
+
+
+.suma {
+	@include flexbox();
+	align-items: center;
+	justify-content: flex-start;
+	margin: 30px 0 30px 0;
+	font-size: 25px;
+	text-transform: uppercase;
+	color: $main_color;
+}
+.suma_title {
+	margin: 0 20px 0 0;
+}
+
+
+.footer{
+	font-family: 'Nunito', sans-serif;
+font-style: italic;
+font-weight: 300;
+font-size: 16px;
+line-height: 22px;
+background: rgba(0, 0, 0, 0.5);;
+color: #fff;
+text-align: center;
+padding: 30px 0 ;
+}
+
+.popup {
+  width: 200px; }
+  .popup img {
+    width: 100%; }
+
+.modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 150px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  -webkit-transition: all 0.8s ease 0s;
+  -o-transition: all 0.8s ease 0s;
+  transition: all 0.8s ease 0s;
+  opacity: 0;
+  visibility: hidden;
+  overflow-y: auto;
+  overflow-x: hidden; }
+
+.modal_body {
+  position: relative;
+  background-color: #fff;
+  padding: 10px;
+  margin: 0 auto;
+  max-width: 500px;
+  
+  color: #000;
+  -webkit-transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+  transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+  opacity: 0;
+  -webkit-transition: all 0.8s ease 0s;
+  -o-transition: all 0.8s ease 0s;
+  transition: all 0.8s ease 0s; }
+ 
+
+.modal.active {
+  opacity: 1;
+  visibility: visible; }
+
+.modal_body.active {
+  opacity: 1;
+  -webkit-transform: perspective(0px) translate(0px, 0px) rotate(0deg);
+  transform: perspective(0px) translate(0px, 0px) rotate(0deg); }
+
+
+  .modal_body_title {
+  	font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  }
+  .modal_body_text {
+  	font-size: 14px;
+  font-weight: 500;
+  }
+
+  .modal_body_item {
+  	  margin: 0 0 10px 0;
+  }
+.modal_body_item_title {
+	font-size: 14px;
+	  font-weight: 700;
+	 margin: 0 0 5px 0;
+}
