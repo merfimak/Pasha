@@ -84,10 +84,12 @@ inputs[i].addEventListener('input', () => {//любое изменение в и
       res = res + promowanie_price;
   }
 
-  let select_rodzaj_sum = Number(formSelect_rodzaj.value);
-  let select_montag_sum = Number(formSelect_montag.value);
-  let select_muzyka_sum = Number(formSelect_muzyka.value);
+  //достаем цену из пункта select 
+  let select_rodzaj_sum = Number(formSelect_rodzaj.options[formSelect_rodzaj.selectedIndex].getAttribute('data-price'));
+  let select_montag_sum = Number(formSelect_montag.options[formSelect_montag.selectedIndex].getAttribute('data-price'));
+  let select_muzyka_sum = Number(formSelect_muzyka.options[formSelect_muzyka.selectedIndex].getAttribute('data-price'));
 
+  // умножаем минуты на стоимость 1 минуты
   let range_sum = range.value * range_price;
   range_value_div.innerHTML = range.value;//показываем количество минут
 
@@ -129,6 +131,182 @@ modal.addEventListener('click', (event) => {
   modal.classList.toggle("active");
   modal_body.classList.toggle("active");
 })
+
+
+//форма
+const form = document.getElementById('form');
+const kontakt = document.getElementById('kontakt');
+const message = document.getElementById('message');
+form.addEventListener('submit', formSend); 
+
+
+
+
+async function formSend(e){
+  e.preventDefault();
+  let error = formValidate(form);// проверяем своим валидатором
+   if(error === 0){
+    let formData = new FormData(form);
+    formData.set('min', range.value);//добовляем количество минут
+      kontakt.classList.add('_sending');//когда убедились что ошибок нет, делаем так что бы посетитель понял что почта отправляется
+
+
+      setTimeout(() => {
+for(var pair of formData.entries()) {
+   console.log(pair[0]+ ', '+ pair[1]);
+}
+
+
+
+        //очищаем всю форму
+         form.reset();
+         range.value = 1;
+         range_value_div.innerHTML = range.value;
+         vol.innerHTML = '';
+         kontakt.classList.remove('_sending');
+         //выыодим сообщение об успехе
+         message.classList.add('_success');
+         message.innerHTML = 'заявка успешно отправлена';
+      }, 1000)
+
+
+     
+     }else{
+       message.classList.add('_false');
+      message.innerHTML = 'заполните корректно все поля формы';
+     }
+       //kontakt.classList.add('_sending');//когда убедились что ошибок нет, делаем так что бы посетитель понял что почта отправляется
+
+/*let formData = new FormData(form);// с помощью new FormData вытягиваем все данные из полей
+  
+  if(error === 0){
+    form.classList.add('_sending');//когда убедились что ошибок нет, делаем так что бы посетитель понял что почта отправляется
+    let response = await fetch('sendmail.php', {
+      method: 'POST',
+      body: formData
+    });
+    if(response.ok){
+      let result = await response.json();//получаем ответ
+      alert(result.message);
+      formPreview.innerHTML = '';//очищаем img
+      form.reset();//очищаем всю форму
+      form.classList.remove('_sending');
+    }else{
+      alert('ошибка');
+      form.classList.remove('_sending');
+    }
+  }else{
+    alert('заполните все поля');
+  }*/
+
+}
+
+
+
+
+
+
+function formValidate(form){
+  let error = 0;
+  let formReq = document.querySelectorAll('._req');
+  for(let index = 0; index < formReq.length; index++){
+    const input = formReq[index];
+    formRemoveError(input);
+
+    if(input.classList.contains('_email')){
+
+      if(input.value === ''){
+        input.placeholder = 'это поле обязательно для заполнения';
+         formAddError(input);
+         error++;
+      }
+      if(input.value != '' && !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value)){
+        input.value = '';
+         input.placeholder = 'введите правельный адрес';
+        formAddError(input);
+        error++;
+      }
+    } else if(input.classList.contains('_text')){
+        if(input.value === ''){
+          input.placeholder = 'это поле обязательно для заполнения';
+           formAddError(input);
+           error++;
+        }
+        if(input.value != '' && input.value.length < 2){
+          input.value = '';
+          input.placeholder = 'минимальное количество знаков больше 2';
+           formAddError(input);
+           error++;
+        }
+        if(input.value != '' && input.value.length > 5){
+          input.value = '';
+          input.placeholder = 'максимально количество знаков не больше 5';
+           formAddError(input);
+           error++;
+        }
+      }  
+}
+return error;
+}
+
+function formAddError(input){
+  
+  input.parentElement.classList.add('_error');
+  input.classList.add('_error');
+}
+
+function formRemoveError(input){
+  input.parentElement.classList.remove('_error');
+  input.classList.remove('_error');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

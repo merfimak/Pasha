@@ -112,8 +112,8 @@
 			</div>
 			<div class="news_video">
 			<div class="news_video_body">
-				<iframe  width="560" height="315" src="https://www.youtube.com/embed/I-LKf-ZQoFs"
-				 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<!-- <iframe  width="560" height="315" src="https://www.youtube.com/embed/I-LKf-ZQoFs"
+				 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 			</div>
 			</div>
 		</div>
@@ -185,37 +185,37 @@
 
 		<div class="form_item">
 			<label for="formSelect_rodzaj" class="form_lable">Rodzaj filmu</label>
-			 <select id="formSelect_rodzaj" class="form_input input formSelect_rodzaj" name="country">
-			 	<option value="0" style="display:none">Wybrac opcje</option>
-			    <option value="200">Film reklamowy lub promocyjny</option>
-			    <option value="380">Wesele/Slub/Komunia/Impreza</option>
-			    <option value="200">VLOG</option>
-			    <option value="200">Reportaz</option>
-			    <option value="50">Ujecia z drona</option>
-			    <option value="50">FPV dron</option>
-			    <option value="250">Teledysk</option>
-			    <option value="150">Art clip</option>
+			 <select id="formSelect_rodzaj" class="form_input input formSelect_rodzaj" name="rodzaj">
+			 	<option value="невыбран" style="display:none">Wybrac opcje</option>
+			    <option value="Film reklamowy lub promocyjny" data-price="200">Film reklamowy lub promocyjny</option>
+			    <option value="Wesele/Slub/Komunia/Impreza" data-price="380">Wesele/Slub/Komunia/Impreza</option>
+			    <option value="VLOG"  data-price="200">VLOG</option>
+			    <option value="Reportaz" data-price="200">Reportaz</option>
+			    <option value="Ujecia z drona" data-price="50">Ujecia z drona</option>
+			    <option value="FPV dron" data-price="50">FPV dron</option>
+			    <option value="Teledysk" data-price="250">Teledysk</option>
+			    <option value="Art clip" data-price="150">Art clip</option>
 			 </select>
 		</div>
 
 		<div class="form_item">
 			<label for="formSelect_montag" class="form_lable">Montaz wideo</label>
-			 <select id="formSelect_montag" class="form_input input formSelect_montag" name="country">
-			 	<option value="0" style="display:none">Wybrac opcje</option>
-			    <option value="0">Nie potrzebuje</option>
-			    <option value="10">Proste ciecie</option>
-			    <option value="50">Złożona wielowarstwowa edycja z prostą grafiką i korekcja kolorów, podstawowe tytuły</option>
+			 <select id="formSelect_montag" class="form_input input formSelect_montag" name="montag">
+			 	<option value="невыбран" style="display:none">Wybrac opcje</option>
+			    <option value="Nie potrzebuje" data-price="0">Nie potrzebuje</option>
+			    <option value="Proste ciecie" data-price="10">Proste ciecie</option>
+			    <option value="Złożona wielowarstwowa edycja z prostą grafiką i korekcja kolorów, podstawowe tytuły" data-price="50">Złożona wielowarstwowa edycja z prostą grafiką i korekcja kolorów, podstawowe tytuły</option>
 			 </select>
 		</div>
 
 		<div class="form_item">
 			<label for="formSelect_muzyka" class="form_lable">Muzyka</label>
-			 <select id="formSelect_muzyka" class="form_input input formSelect_muzyka" name="country">
-			 	<option value="0" style="display:none">Wybrac opcje</option>
-			    <option value="0">Muzyka przesłana lub wskazana przez Ciebie</option>
-			    <option value="5">Wybór odpowiedniej kompozycji do wideo w Internecie</option>
-			    <option value="25">Muzyka do komercyjnego wykorzystania na licencji</option>
-			    <option value="0">Bez muzyki</option>
+			 <select id="formSelect_muzyka" class="form_input input formSelect_muzyka" name="muzyka">
+			 	<option value="невыбран" style="display:none">Wybrac opcje</option>
+			    <option value="Muzyka przesłana lub wskazana przez Ciebie" data-price="0">Muzyka przesłana lub wskazana przez Ciebie</option>
+			    <option value="Wybór odpowiedniej kompozycji do wideo w Internecie" data-price="5">Wybór odpowiedniej kompozycji do wideo w Internecie</option>
+			    <option value="Muzyka do komercyjnego wykorzystania na licencji" data-price="25">Muzyka do komercyjnego wykorzystania na licencji</option>
+			    <option value="Bez muzyki">Bez muzyki</option>
 			 </select>
 		</div>
 
@@ -232,15 +232,15 @@
 		<div class="form_item">
 			<div class="checkboxs">
 				<div class="checkbox">
-					<input id="checkbox_input_lektor" type="checkbox" name="agreement" class="input checkbox_input" data-price="25">
+					<input id="checkbox_input_lektor" type="checkbox" name="lektor" class="input checkbox_input" data-price="25" value="on">
 					<label for="checkbox_input_lektor" class="checkbox_label">Lektor</label>
 				</div>
 				<div class="checkbox">
-					<input id="checkbox_input_chrom" type="checkbox" name="agreement" class="input checkbox_input _req" data-price="70">
+					<input id="checkbox_input_chrom" type="checkbox" name="chrom" class="input checkbox_input" data-price="70" value="on">
 					<label for="checkbox_input_chrom" class="checkbox_label">Chromakey</label>
 				</div>
 				<div class="checkbox">
-					<input id="checkbox_input_promowanie" type="checkbox" name="agreement" class="input checkbox_input _req"  data-price="100">
+					<input id="checkbox_input_promowanie" type="checkbox" name="promowanie" class="input checkbox_input"  data-price="100" value="on">
 					<label for="checkbox_input_promowanie" class="checkbox_label checkbox_label_costyl">Promowanie filmu w internecie</label>
 				</div>
 			</div>		
@@ -253,16 +253,17 @@
 		
 		<div class="form_item">
 			<label for="formName" class="form_lable">Имя*</label>
-			<input type="text" id="formName" name="name" class="form_input _req">
+			<input type="text" id="formName" name="name"  placeholder="Введите Имя" class="form_input _req _text">
 		</div>
 		<div class="form_item">
 			<label for="formEmail" class="form_lable">Email*</label>
-			<input type="text" id="formEmail" name="email" class="form_input _req _email">
+			<input type="text" id="formEmail" name="email"  placeholder="Введите Email"  class="form_input _req _email">
 		</div>
 		<div class="form_item">
 			<label for="formMassege" class="form_lable">Сообщение</label>
 			<textarea name="massege" id="formMassege" class="form_input"></textarea>			
 		</div>
+		<div class="message" id="message"></div>
 		<button type="submit" class="form_button">Wyśli</button>
 	</form>
 	</div>
