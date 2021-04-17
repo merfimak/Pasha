@@ -30,8 +30,8 @@
 			<nav class="menu__nav">
 				<ul class="menu__list">					
 					<li><a href="portfolio.html" class="menu__link">Portfolio</a></li>
-					<li><a href="index.html#kontakt_form" class="menu__link">Kontakt</a></li>
-					<li><a href="index.html#kontakt" class="menu__link">Cennik</a></li>
+					<li><a href="index.html#messaging" class="menu__link">Kontakt</a></li>
+					<li><a href="index.html#cennik" class="menu__link">Cennik</a></li>
 					<li><a href="index.html#about" class="menu__link">about</a></li>
 				</ul>
 			</nav>
@@ -102,7 +102,7 @@
 
 			    </div>
 			   <!-- Add Pagination -->
-    			<div class="swiper-pagination"></div>
+    			<div class="swiper-pagination"></div> 
 			  </div>
 			</div>		
 		</div>
@@ -110,7 +110,8 @@
 
 		<div class="modal_for_video">
 	<div class="modal_video_body">
-		<video controls autoplay class="modalvideo">
+		<div class="video_pauses" id="video_pauses">X</div>
+		<video controls autoplay class="modalvideo" id="myVideo">
 		  	<source src="" type="video/mp4">
 		  		Your browser does not support HTML5 video.
 		 </video>

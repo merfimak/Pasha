@@ -4,10 +4,8 @@
 @mixin rotate($deg){-moz-transform: rotate($deg);-ms-transform: rotate($deg);-webkit-transform: rotate($deg);-o-transform: rotate($deg);transform: rotate($deg);}
 //@include rotate(20deg);
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,300&display=swap');
-//font-family: 'Nunito', sans-serif;
-
-
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700,800,900&display=swap');
+$main_font: 'Roboto', sans-serif;
 				
 //#8EEB00	#7CB02C	#5C9900	#ACF53D	#C0F56E
 //Вторичный Цвет A:
@@ -15,10 +13,15 @@
 //Вторичный Цвет B:
 //#8F04A8	#70227E	#5D016D	#BC38D3	#C262D3
 
-$main_color: #ACF53D;
+//пашины цвета #61892F #86C232 #222629 #474B4F #6B6E70
+
+
+$main_color: #fff;
+$text_color: #222629;
 $accen_color: #A60000;
 $sub_accen_color: #BF3030;
-$accen_text: #70227E;
+$calc_green: #86C232;
+$calc_green_accent: #5C9900;
 
 
 
@@ -36,7 +39,7 @@ $accen_text: #70227E;
 	 width: 100%;
 	 position: fixed;
 	z-index: 50;
-	font-family: 'Nunito', sans-serif;
+	font-family: $main_font;
 }
 .menu_body {
 	padding:5px 10px 5px;
@@ -371,7 +374,7 @@ position: absolute;
 	text-transform: uppercase;
 	color: #fff;
 	text-shadow: 2px 3px 4px #000;
-	font-family: 'Nunito', sans-serif;
+	font-family: $main_font;
 }
 .rightnow_btn {
 			display: flex;
@@ -388,7 +391,7 @@ position: absolute;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4),0 1px 5px rgba(0, 0, 0, 0.4);
 	border-radius: 5px;
 	background-color: $accen_color;
-	font-family: 'Nunito', sans-serif;
+	font-family: $main_font;
 	cursor: pointer;
 	transition: 0.5s;
 	&:hover{
@@ -468,7 +471,7 @@ position: absolute;
 	}
 }
 .about_body {
-	font-family: 'Nunito', sans-serif;
+	font-family: $main_font;
 	padding: 0 10px;
 	max-width: 1200px;
 	margin: 0 auto;
@@ -492,6 +495,7 @@ position: absolute;
 	margin: 0 0 30px 0;
 	font-size: 20px;
 	font-weight: 700;
+	color: $text_color;
 	@media screen and (max-width: 1100px){
 		font-size: 18px;
 	}
@@ -500,6 +504,7 @@ position: absolute;
 	}
 }
 .about_text {
+	color: $text_color;
 	font-size: 15px;
 	font-weight: 400;
 	line-height: 1.5;
@@ -509,6 +514,7 @@ position: absolute;
 }
 .about_foto {
 	flex: 0 0 200px;
+	height: 200px;
 	width: 200px;
 	border-radius: 50%;
 	overflow: hidden;
@@ -519,6 +525,7 @@ position: absolute;
 	}
 	@media screen and (max-width: 1100px){
 		flex: 0 0 180px;
+		height: 180px;
 		width: 180px;
 	}
 	@media screen and (max-width: 786px){
@@ -536,6 +543,7 @@ position: absolute;
 	}
 }
 .about_contact_title {
+	color: $text_color;
 	margin: 0 0 30px 0;
 	font-size: 18px;
 	font-weight: 700;
@@ -558,7 +566,7 @@ position: absolute;
 		font-weight: 400;
 	}
 	a{
-		color: $accen_text;
+		color: $text_color;
 	}
 	@media screen and (max-width: 1100px){
 		font-size: 14px;
@@ -589,7 +597,7 @@ position: absolute;
 	}
 }
 .news_body {
-		font-family: 'Nunito', sans-serif;
+		font-family: $main_font;
 	padding: 0 10px;
 	max-width: 1200px;
 	margin: 0 auto;
@@ -600,6 +608,7 @@ position: absolute;
 	text-align: center;
 	font-size: 30px;
 	font-weight: 700;
+	color: $text_color;
 	text-transform: uppercase;
 }
 .news_info {
@@ -632,7 +641,7 @@ position: absolute;
 	font-size: 15px;
 	font-weight: 400;
 	line-height: 1.5;
-	color: #70227E;
+	color: $text_color;
 	@media screen and (max-width: 1100px){
 		font-size: 14px;
 	}
@@ -651,6 +660,7 @@ position: absolute;
   padding-bottom: 56.25%; /* задаёт высоту контейнера для 16:9 (если 4:3 — поставьте 75%) */
   height: 0;
   overflow: hidden;
+   background: url("../img/indik.gif") center / 150px no-repeat;
 	  iframe{
 		  position: absolute;
 		  top: 0;
@@ -666,10 +676,10 @@ position: absolute;
 
 .kontakt {
 	position: relative;
-	font-family: 'Nunito', sans-serif;
+	font-family: $main_font;
 	background-color: #333;
 	height: 100%;
-	font-size: 14;
+	font-size: 14px;
 	line-height: 1;
 	padding: 30px 0 50px 0;
 }
@@ -716,13 +726,38 @@ opacity:1;
 }
 
 .kontakt_cennik {
+	position: relative;
 	text-align: center;
 	max-width: 300px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	min-height: 60px;
-	background-color:  #5C9900;
+	background-color:  $calc_green;
+	color: #fff;
+	font-size: 23px;
+	text-transform: uppercase;
+	line-height: 1.1;
+	font-weight: 400;
+	cursor: pointer;
+	border-radius: 10px;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.7),0 1px 5px rgba(0, 0, 0, 0.7);
+	transition: 0.5s ease 0s;
+	margin: 0 auto 20px;
+}
+
+.sub_cennik{			
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: $calc_green_accent;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 60px;
 	color: #fff;
 	font-size: 13px;
 	text-transform: uppercase;
@@ -731,11 +766,15 @@ opacity:1;
 	cursor: pointer;
 	border-radius: 10px;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.7),0 1px 5px rgba(0, 0, 0, 0.7);
-	position: relative;
-	top: 0;
-	transition: background-color 0.5s ease 0s;
 	margin: 0 auto 20px;
-}
+	transition: 0.5s ease 0s;
+	opacity: 0;
+			}
+
+
+.kontakt_cennik:hover .sub_cennik{
+			opacity: 1;
+			}
 
 .form {}
 .form_body {
@@ -788,7 +827,7 @@ input[type=range]::-webkit-slider-thumb {
   height: 36px;
   width: 16px;
   border-radius: 3px;
-  background: #7CB02C;
+  background: $calc_green_accent;
   cursor: pointer;
   margin-top: -14px; /* Вам нужно указать значение для поля в Chrome, но в Firefox и IE это происходит автоматически */
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Добавляем классные эффекты для слайдера! */
@@ -801,7 +840,7 @@ input[type=range]::-moz-range-thumb {
   height: 36px;
   width: 16px;
   border-radius: 3px;
-  background: #7CB02C;
+  background: $calc_green_accent;
   cursor: pointer;
 }
  
@@ -812,7 +851,7 @@ input[type=range]::-ms-thumb {
   height: 36px;
   width: 16px;
   border-radius: 3px;
-  background: #7CB02C;
+  background: $calc_green_accent;
   cursor: pointer;
 }
 
@@ -823,13 +862,13 @@ input[type=range]::-webkit-slider-runnable-track {
   height: 8.4px;
   cursor: pointer;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  background: #5C9900;
+  background: $calc_green;
   border-radius: 1.3px;
   border: 0.2px solid #010101;
 }
  
 input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #5C9900;
+  background: $calc_green;
 }
  
 input[type=range]::-moz-range-track {
@@ -837,7 +876,7 @@ input[type=range]::-moz-range-track {
   height: 8.4px;
   cursor: pointer;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  background: #5C9900;
+  background: $calc_green;
   border-radius: 1.3px;
   border: 0.2px solid #010101;
 }
@@ -852,22 +891,22 @@ input[type=range]::-ms-track {
   color: transparent;
 }
 input[type=range]::-ms-fill-lower {
-  background: #5C9900;
+  background: $calc_green;
   border: 0.2px solid #010101;
   border-radius: 2.6px;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
 }
 input[type=range]:focus::-ms-fill-lower {
-  background: #5C9900;
+  background: $calc_green;
 }
 input[type=range]::-ms-fill-upper {
-  background: #5C9900;
+  background: $calc_green;
   border: 0.2px solid #010101;
   border-radius: 2.6px;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
 }
 input[type=range]:focus::-ms-fill-upper {
-  background: #5C9900;
+  background: $calc_green
 }
 
 
@@ -937,7 +976,7 @@ input[type=range]:focus::-ms-fill-upper {
 	left: 4px;
 	width: 16px;
 	height: 16px;
-	background-color: #5C9900;
+	background-color: $calc_green;
 	border-radius: 50%;
 	transform: scale(0);
 }
@@ -1011,7 +1050,7 @@ textarea.form_input {
 	justify-content: center;
 	align-items: center;
 	min-height: 60px;
-	background-color:  #5C9900;
+	background-color:  $calc_green;
 	color: #fff;
 	font-size: 18px;
 	text-transform: uppercase;
@@ -1025,7 +1064,7 @@ textarea.form_input {
 	transition: background-color 0.5s ease 0s;
 }
 .form_button:hover{
-	background-color: #7CB02C;
+	background-color: $calc_green_accent;
 }
 
 .form_button:active{
@@ -1041,7 +1080,7 @@ textarea.form_input {
 	margin: 30px 0 30px 0;
 	font-size: 25px;
 	text-transform: uppercase;
-	color: $main_color;
+	color: $calc_green;
 }
 .suma_title {
 	margin: 0 20px 0 0;
@@ -1049,7 +1088,7 @@ textarea.form_input {
 
 
 .footer{
-	font-family: 'Nunito', sans-serif;
+	font-family: $main_font;
 font-style: italic;
 font-weight: 300;
 font-size: 16px;
@@ -1149,7 +1188,7 @@ padding: 30px 0 ;
 	text-transform: uppercase;
 	color: #000;
 	text-shadow:  0 1px 5px rgba(0, 0, 0, 0.7),0 1px 5px rgba(0, 0, 0, 0.7);;
-	font-family: 'Nunito', sans-serif;
+	font-family: $main_font;
 }
 
 .foto_swiper.swiper-container {
@@ -1185,7 +1224,7 @@ padding: 30px 0 ;
 	text-transform: uppercase;
 	color: #000;
 	text-shadow:  0 1px 5px rgba(0, 0, 0, 0.7),0 1px 5px rgba(0, 0, 0, 0.7);;
-	font-family: 'Nunito', sans-serif;
+	font-family: $main_font;
 }
 
 
@@ -1212,6 +1251,10 @@ padding: 30px 0 ;
 
 
 ////////////////////////////////модуль видео
+
+
+
+
 .modal_for_video {
 		width: 100%;
 	height: 100%;
@@ -1233,6 +1276,7 @@ padding: 30px 0 ;
 	margin: 0 auto;
 	max-width: 80%;
 	padding:  45px 0;
+	z-index: 100;
 	transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
 	opacity: 1;
 	transition: all 0.8s ease 0s;
@@ -1244,6 +1288,29 @@ video{
 	}
 }
 
+
+.video_pauses{
+	position: absolute;
+	right: 0;
+	top: 45px;
+	width: 50px;
+	height: 50px;
+	z-index: 100;
+	text-align: center;
+	padding: 5px;
+	font-size: 35px;
+	font-family: $main_font;
+	cursor: pointer;
+	text-shadow: 0 1px 5px rgba(255,255,255, 0.4),0 1px 5px rgba(255,255,255, 0.4);
+		@media screen and (max-width: 520px){
+			right: -10px;
+		font-size: 20px;
+	}
+}
+
+
+
+
 .modal_for_video.active {
   opacity: 1;
   visibility: visible;
@@ -1254,16 +1321,17 @@ video{
 	opacity: 1;
 }
 
+.video_slide{
 
+}
 
 .video_popup {
 	cursor: pointer;
 		position: relative;
 	width: 100%;
+	margin: 0 auto;
 	height: 100%;
-			@media screen and (max-width: 520px){
-		margin: 10px;
-	}
+	
 	&:after{
 		content: '';
 		position: absolute;
@@ -1276,8 +1344,8 @@ video{
 
 	}
 	@media screen and (max-width: 520px){
-		width: 270px;
-		height: 130px;
+		width: 85%;
+		height: 85%;		
 			&:after{
 		content: '';
 		position: absolute;

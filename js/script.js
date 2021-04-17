@@ -2,8 +2,6 @@ window.onload = function() {
 
 
 
-
-
 //бургер
 const header__burger = document.querySelector('.header__burger');
 const menu__nav = document.querySelector('.menu__nav');
@@ -61,76 +59,77 @@ document.querySelectorAll('._slow_scroll').forEach(link => {
 
 
 
+if(window.location.pathname.indexOf('portfolio') === -1){
+ console.log('страничка index')
 
 
+//ленивая загрузка
+const lazy = document.querySelectorAll('img[data-src], iframe[data-src_vid]');
+const windowHeight = document.documentElement.clientHeight;//общая высота
 
- var swiper = new Swiper('.foto_swiper', {
- effect: 'coverflow',
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: 'auto',
-      coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true,
-      },
-      loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-      },
-    });
+let lazyPosition = [];//массив с позициями элементов которые надо будет подгрузить
 
-  var swiper = new Swiper('.video_swiper', {
- effect: 'coverflow',
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: 'auto',
-      coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true,
-      },
-      loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-      },
-    });
-
-//если мы на страничке потфолио то запустыться и остальные скрипты
-
-function videoPopup(){
-const video_popup_img = document.querySelectorAll('.video_popup')//все Контейнеры с фотками внутри, они засунуты бекграундом с  ibg()
-const modal_video_body = document.querySelector('.modal_video_body')
-const modalvideo = document.querySelector('.modalvideo')
-const modal_for_video = document.querySelector('.modal_for_video')
-const video = document.querySelector('.modalvideo')
-if(video_popup_img && modal_for_video && modal_video_body){
-  for (i = 0; i < video_popup_img.length; i++) {
-video_popup_img[i].addEventListener('click', (event) => { 
-    src = event.target.dataset.src;
-    modalvideo.src = this.src;
-     modal_for_video.classList.add("active");
-     modal_video_body.classList.add("active");
+if(lazy.length>0){//если есть хоть один элимент
+  lazy.forEach(item => {//проходимся по всему масиву
+    if(item.dataset.src || item.dataset.src_vid){//проверяем есть ли какие либо данные
+      //Element.getBoundingClientRect() возвращает размер элемента и его позицию относительно viewport (часть страницы, показанная на экране, и которую мы видим).
+      lazyPosition.push(item.getBoundingClientRect().top + pageYOffset )//pageYOffset  возвращает количество пикселей, на которое прокручен документ по вертикали
+    lazyScrollCheck()
       
-   })
-}
-modal_for_video.addEventListener('click', (event) => {
-video.pause();
-modal_for_video.classList.remove("active");
-modal_video_body.classList.remove("active");
-})
+    }
+  });
 }
 
+window.addEventListener("scroll", lazyScroll)
+
+function lazyScroll(){
+  if(document.querySelectorAll('img[data-src], iframe[data-src_vid]').length>0)//эта проверка сдесь так как после каждого загруженного элемента мы убираем его из массива
+  lazyScrollCheck()
 }
 
-videoPopup()
+function lazyScrollCheck(){
+  //findIndex() возвращает индекс в массиве, если элемент удовлетворяет условию проверяющей функции. В противном случае возвращается -1.
+  //item - позиция какогото из элементов который надо подгрузить
+  // в момент когда в на нижней границе экрана появится элимент, сработает условие в нутри findeIndex и на вернется индек того элемента который надо подгружать
+  let elemIndex = lazyPosition.findIndex(
+     item =>  pageYOffset > item - windowHeight
+    );
+  if(elemIndex >= 0){//если нашолся то 
+    if(lazy[elemIndex].dataset.src){
+      lazy[elemIndex].src = lazy[elemIndex].dataset.src;//засовываем в src нужный петь
+      lazy[elemIndex].removeAttribute('data-src');//удаляем ненужный атрибут
+    }else if(lazy[elemIndex].dataset.src_vid){
+      lazy[elemIndex].src = lazy[elemIndex].parentElement.dataset.vid;//src берем у родителя так как dataset у iframe не прописывается
+      lazy[elemIndex].removeAttribute('data-src_vid');
+    }
+    delete lazyPosition[elemIndex];
+  }
+}
 
 
-        //дрон
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         //дрон
         const p = document.querySelector('.main_drone_img'),
             fluigeart = window.matchMedia("(min-width: 726px)");//ширина экрана
             wrapper.addEventListener('mousemove', function(e) {
@@ -215,6 +214,7 @@ videoPopup()
       const form = document.getElementById('form');
       const kontakt = document.getElementById('kontakt');
       const message = document.getElementById('message');
+       let formReq = document.querySelectorAll('._req');
       form.addEventListener('submit', formSend); 
 
 
@@ -241,14 +241,18 @@ videoPopup()
          kontakt.classList.remove('_sending');
          //выыодим сообщение об успехе
          message.classList.add('_success');
-         message.innerHTML = 'заявка успешно отправлена';
+         message.innerHTML = 'List wysłany';
+          for(let index = 0; index < formReq.length; index++){//удоляем все плейсхолдеры если в них были сообщения об ошибках
+            const input = formReq[index];
+              input.placeholder = '';
+          }
       }, 1000)
 
 
      
      }else{
        message.classList.add('_false');
-      message.innerHTML = 'заполните корректно все поля формы';
+      message.innerHTML = 'Wypełnij poprawnie wymagane pola';
              }
                //kontakt.classList.add('_sending');//когда убедились что ошибок нет, делаем так что бы посетитель понял что почта отправляется
 
@@ -276,14 +280,9 @@ videoPopup()
 
         }
 
-
-
-
-
-
       function formValidate(form){
         let error = 0;
-        let formReq = document.querySelectorAll('._req');
+       
         for(let index = 0; index < formReq.length; index++){
           const input = formReq[index];
           formRemoveError(input);
@@ -297,7 +296,7 @@ videoPopup()
             }
             if(input.value != '' && !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value)){
               input.value = '';
-               input.placeholder = 'введите правельный адрес';
+               input.placeholder = 'Proszę wpisać poprawnie adres e-mail';
               formAddError(input);
               error++;
             }
@@ -334,6 +333,146 @@ videoPopup()
         input.parentElement.classList.remove('_error');
         input.classList.remove('_error');
       }
+}else{
+  console.log('страничка portfolio')
+   var swiper = new Swiper('.foto_swiper', {
+ effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      },
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    });
+
+  var swiper = new Swiper('.video_swiper', {
+ effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      },
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    });
+
+//если мы на страничке потфолио то запустыться и остальные скрипты
+
+function videoPopup(){
+const video_popup_img = document.querySelectorAll('.video_popup')//все Контейнеры с фотками внутри, они засунуты бекграундом с  ibg()
+const modal_video_body = document.querySelector('.modal_video_body')
+const modalvideo = document.querySelector('.modalvideo')
+const modal_for_video = document.querySelector('.modal_for_video')
+const vid = document.getElementById("myVideo");
+const video_pauses = document.getElementById("video_pauses");
+
+//console.log(video)
+console.log(vid)
+
+if(video_popup_img && modal_for_video && modal_video_body){
+  for (i = 0; i < video_popup_img.length; i++) {
+video_popup_img[i].addEventListener('click', (event) => { 
+    src = event.target.dataset.src;
+    modalvideo.src = this.src;
+     modal_for_video.classList.add("active");
+     modal_video_body.classList.add("active");
+      
+   })
+}
+
+}
+
+video_pauses.addEventListener('click', (event) => {
+  vid.pause();
+  modal_for_video.classList.remove("active");
+modal_video_body.classList.remove("active");
+
+})
+
+}
+
+videoPopup()
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
